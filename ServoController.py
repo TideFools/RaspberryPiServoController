@@ -16,7 +16,7 @@
 #   RPI.GPIO
 #   python-smbus
 #   Adafruit_PCA9685
-#       https://github.com/adafruit/Adafruit_CircuitPython_PCA9685
+#       https://github.com/adafruit/Adafruit_Python_PCA9685
 
 
 from __future__ import division
@@ -44,7 +44,7 @@ pwm.set_pwm_freq(60)
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 while True:
     # Move servo on channel O between extremes.
-    pwm.set_pwm(0, 0, servo_min)
-    time.sleep(5)
-    pwm.set_pwm(0, 0, servo_max)
-    time.sleep(5)
+    pwm.set_all_pwm(0, servo_min)
+    time.sleep(2)
+    pwm.set_all_pwm(0, servo_max)
+    time.sleep(2)
