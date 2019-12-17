@@ -1,39 +1,50 @@
 #!/usr/bin/env python3
 
 ## Authors: Sean McAtee, Merai Dandouch
-## Version: 12/10/2019
+## Version: 12/17/2019
 
 ## About:
-#       This program is for a Raspberry Pi connected to an Adafruit Driver to control the speed of 12 servo motors.
-#       Pi: Raspberry Pi 3 Model B
-#       Driver: Adafruit CA9685 16-Channel 12-Bit PWM Driver
+#       This program is for a Raspberry Pi connected to an Adafruit Driver 
+#       to control the speed of 12 servo motors.
 
-# Dependencies:
-#   RPi.GPIO
-#       pip install RPi.GPIO
+## Hardware:
+#   Pi: Raspberry Pi 3 Model B
+#   OS: Raspbian Buster Lite (Version: September 2019)
+#   Driver: Adafruit CA9685 16-Channel 12-Bit PWM Driver
+
+## Dependencies:
+#   RPI.GPIO
+#   python-smbus
+#   Adafruit_PCA9685
+#       https://github.com/adafruit/Adafruit_CircuitPython_PCA9685
 
 
-# Do we need to add a capacitor to our hat??
-#when setting up use 'sudo i2cdetect -y 1' to find the pin address
+from __future__ import division
+import time
 
-try:
-    import RPi.GPIO as GPIO
-except RuntimeError:
-    print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
+# Import the PCA9685 module.
+import Adafruit_PCA9685
 
-#Using BOARD mode to reference pins because it is more stable if the Pi is changed
-GPIO.setmode(GPIO.BOARD)
-GPIO.setwarnings(False)
+#Debug output
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
-#Set output channels
-chan_list = []
+# Initialise the PCA9685
+#   using the default address (address=0x40)
+#   using the default bus (busnum=1)
+pwm = Adafruit_PCA9685.PCA9685()
 
-GPIO.setup(chan_list, GPIO.OUT)
+# Configure min and max servo pulse lengths
+servo_min = 150  # Min pulse length out of 4096
+servo_max = 600  # Max pulse length out of 4096
 
-#p = GPIO.PWM(channel, frequency)
+# Set frequency to 60hz, good for servos.
+pwm.set_pwm_freq(60)
 
-#dc = duty cycle between 0.0 and 100.0
-#p.start(dc)
-#p.ChangeFrequency(frequency in Hz)
-#p.ChangeDutyCycle(dc)
-#p.stop()
+print('Moving servo on channel 0, press Ctrl-C to quit...')
+while True:
+    # Move servo on channel O between extremes.
+    pwm.set_pwm(0, 0, servo_min)
+    time.sleep(5)
+    pwm.set_pwm(0, 0, servo_max)
+    time.sleep(5)
