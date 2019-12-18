@@ -25,9 +25,9 @@ import time
 # Import the PCA9685 module.
 import Adafruit_PCA9685
 
-#Debug output
-import logging
-logging.basicConfig(level=logging.DEBUG)
+#Uncomment for debug output
+#import logging
+#logging.basicConfig(level=logging.DEBUG)
 
 # Initialise the PCA9685
 #   using the default address (address=0x40)
