@@ -43,21 +43,21 @@ servo_max = 430  # Max pulse length out of 4096
 # Set frequency to 60hz, good for servos.
 pwm.set_pwm_freq(60)
 
-print('Moving all servos, press Ctrl-C to quit...')
 
 # Moves all servos through functional range of pulse lengths
-#i = servo_min
-#while i <= servo_max:
-#    pwm.set_all_pwm(0, i)
-#    time.sleep(0.05)
-#    i = i + 1
+print("Moving all servos through functional range")
+i = servo_min
+while i <= servo_max:
+   pwm.set_all_pwm(0, i)
+   time.sleep(0.05)
+   i = i + 1
 
 # Check movement of each servo
 print("Check movement of each servo")
 i = 0
 while i <= 15:
     pwm.set_pwm(i, 0, servo_max)
-    time.sleep(1)
+    time.sleep(0.5)
     pwm.set_pwm(i, 0, 0)
     i = i + 1
 
