@@ -50,7 +50,7 @@ i = servo_min
 while i <= servo_max:
     pwm.set_all_pwm(0, i)
     print(i)
-    time.sleep(0.01)
+    time.sleep(0.1)
     i = i + 1
 
 #stop servos with pulse 350
