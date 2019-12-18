@@ -66,12 +66,12 @@ print("Move each servo at different speeds")
 mod = servo_max - servo_min
 i = 0
 while i <= 5:
-    pwm.set_pwm(1, 0, servo_min + ((i * 2) % mod))
-    pwm.set_pwm(2, 0, servo_min + ((i * 5) % mod))
-    pwm.set_pwm(3, 0, servo_min + ((i * 9) % mod))
-    pwm.set_pwm(4, 0, servo_min + ((i * 7) % mod))
-    pwm.set_pwm(5, 0, servo_min + ((i * 3) % mod))
-    pwm.set_pwm(6, 0, servo_min + ((i * 4) % mod))
+    pwm.set_pwm(1, 0, servo_min + ((i * 32) % mod))
+    pwm.set_pwm(2, 0, servo_min + ((i * 15) % mod))
+    pwm.set_pwm(3, 0, servo_min + ((i * 39) % mod))
+    pwm.set_pwm(4, 0, servo_min + ((i * 27) % mod))
+    pwm.set_pwm(5, 0, servo_min + ((i * 13) % mod))
+    pwm.set_pwm(6, 0, servo_min + ((i * 14) % mod))
     pwm.set_pwm(7, 0, servo_min + ((i * 33) % mod))
     pwm.set_pwm(8, 0, servo_min + ((i * 24) % mod))
     pwm.set_pwm(9, 0, servo_min + ((i * 32) % mod))
@@ -81,13 +81,14 @@ while i <= 5:
     pwm.set_pwm(13, 0, servo_min + ((i * 15) % mod))
     pwm.set_pwm(14, 0, servo_min + ((i * 19) % mod))
     pwm.set_pwm(15, 0, servo_min + ((i * 22) % mod))
-    time.sleep(1)
+    time.sleep(0.5)
     i = i + 1
 
 # Start stop cycle at increasing rate
 print("Start stop cycle at increasing rate")
-i = 1
-while i <= servo_max:
+i = 1.0
+print (i)
+while i > 0.0:
     pwm.set_all_pwm(0, servo_max)
     time.sleep(i)
     pwm.set_all_pwm(0, 0)
