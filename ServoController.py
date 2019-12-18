@@ -46,7 +46,8 @@ i = 0
 while i <= 4096:
     # Move servo on channel O between extremes.
     pwm.set_all_pwm(0, i)
-    time.sleep(0.01)
+    print(i)
+    time.sleep(0.2)
     #pwm.set_all_pwm(0, servo_max)
     #time.sleep(1)
     i = i + 1
