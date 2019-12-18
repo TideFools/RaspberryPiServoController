@@ -54,33 +54,42 @@ print('Moving all servos, press Ctrl-C to quit...')
 
 # Check movement of each servo
 i = 0
-while i <= 16:
+while i <= 15:
     pwm.set_pwm(i, 0, servo_max)
+    time.sleep(1)
+    pwm.set_pwm(i, 0, 0)
+    i = i + 1
+
+# Moves each servo at different speeds
+mod = servo_max - servo_min
+i = 0
+while i <= 5:
+    pwm.set_pwm(1, 0, servo_min + ((i * 2) % mod))
+    pwm.set_pwm(2, 0, servo_min + ((i * 5) % mod))
+    pwm.set_pwm(3, 0, servo_min + ((i * 9) % mod))
+    pwm.set_pwm(4, 0, servo_min + ((i * 7) % mod))
+    pwm.set_pwm(5, 0, servo_min + ((i * 3) % mod))
+    pwm.set_pwm(6, 0, servo_min + ((i * 4) % mod))
+    pwm.set_pwm(7, 0, servo_min + ((i * 33) % mod))
+    pwm.set_pwm(8, 0, servo_min + ((i * 24) % mod))
+    pwm.set_pwm(9, 0, servo_min + ((i * 32) % mod))
+    pwm.set_pwm(10, 0, servo_min + ((i * 87) % mod))
+    pwm.set_pwm(11, 0, servo_min + ((i * 11) % mod))
+    pwm.set_pwm(12, 0, servo_min + ((i * 17) % mod))
+    pwm.set_pwm(13, 0, servo_min + ((i * 15) % mod))
+    pwm.set_pwm(14, 0, servo_min + ((i * 19) % mod))
+    pwm.set_pwm(15, 0, servo_min + ((i * 22) % mod))
     time.sleep(1)
     i = i + 1
 
-# # Moves each servo at different speeds
-# i = servo_min
-# while i <= servo_max:
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     pwm.set_pwm(0, 0, i)
-#     time.sleep(0.05)
-#     i = i + 1
-
-# # Start stop...
-# while i <= servo_max:
-#     pwm.set_all_pwm(0, i)
-#     time.sleep(0.05)
-#     i = i + 1
+# Start stop cycle at increasing rate
+i = 1
+while i <= servo_max:
+    pwm.set_all_pwm(0, servo_max)
+    time.sleep(i)
+    pwm.set_all_pwm(0, 0)
+    time.sleep(i)
+    i = i - 0.05
 
 # # Warm up, warm down
 # while i <= servo_max:
