@@ -60,6 +60,7 @@ while i <= 15:
     time.sleep(0.5)
     pwm.set_pwm(i, 0, 0)
     i = i + 1
+pwm.set_all_pwm(0, 0)
 
 # Moves each servo at different speeds
 print("Move each servo at different speeds")
@@ -83,33 +84,37 @@ while i <= 5:
     pwm.set_pwm(15, 0, servo_min + ((i * 22) % mod))
     time.sleep(0.5)
     i = i + 1
+pwm.set_all_pwm(0, 0)
 
 # Start stop cycle at increasing rate
 print("Start stop cycle at increasing rate")
 i = 1.0
-print (i)
 while i > 0.0:
+    print (i)
     pwm.set_all_pwm(0, servo_max)
     time.sleep(i)
     pwm.set_all_pwm(0, 0)
     time.sleep(i)
     i = i - 0.05
+pwm.set_all_pwm(0, 0)
 
 # Warm up clockwise
 print("Warm up clockwise")
 i = 350
 while i >= servo_min:
     pwm.set_all_pwm(0, i)
-    time.sleep(0.5)
+    time.sleep(0.25)
     i = i - 1
+pwm.set_all_pwm(0, 0)
 
 # Warm up counterclockwise
 print("Warm up counterclockwise")
 i = 354
 while i <= servo_max:
     pwm.set_all_pwm(0, i)
-    time.sleep(0.5)
+    time.sleep(0.25)
     i = i + 1
+pwm.set_all_pwm(0, 0)
 
 #stop servos with pulse 350
 pwm.set_all_pwm(0, 0)
