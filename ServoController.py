@@ -46,14 +46,14 @@ pwm.set_pwm_freq(60)
 print('Moving all servos, press Ctrl-C to quit...')
 
 # Moves all servos through functional range of pulse lengths
-i = servo_min
-while i <= servo_max:
-    pwm.set_all_pwm(0, i)
-    time.sleep(0.05)
-    i = i + 1
+#i = servo_min
+#while i <= servo_max:
+#    pwm.set_all_pwm(0, i)
+#    time.sleep(0.05)
+#    i = i + 1
 
-pwm.set_pwm(0, 0, 400)
-time.sleep(1)
+pwm.set_pwm(0, 0, servo_max)
+time.sleep(2)
 
 # # Moves each servo at different speeds
 # i = servo_min
