@@ -35,8 +35,8 @@ logging.basicConfig(level=logging.DEBUG)
 pwm = Adafruit_PCA9685.PCA9685()
 
 # Configure min and max servo pulse lengths
-servo_min = 200  # Min pulse length out of 4096
-servo_max = 250  # Max pulse length out of 4096
+servo_min = 100  # Min pulse length out of 4096
+servo_max = 300  # Max pulse length out of 4096
 
 # Set frequency to 60hz, good for servos.
 pwm.set_pwm_freq(60)
