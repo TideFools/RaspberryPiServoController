@@ -21,6 +21,7 @@
 
 from __future__ import division
 import time
+import random
 
 # Import the PCA9685 module.
 import Adafruit_PCA9685
@@ -67,26 +68,25 @@ time.sleep(0.2)
 
 # Moves each servo at different speeds
 print("Move each servo at different speeds")
-mod = servo_max - servo_min
 i = 0
-while i <= 5:
-    pwm.set_pwm(0, 0, servo_min + ((i * 31) % mod))
-    pwm.set_pwm(1, 0, servo_min + ((i * 32) % mod))
-    pwm.set_pwm(2, 0, servo_min + ((i * 15) % mod))
-    pwm.set_pwm(3, 0, servo_min + ((i * 39) % mod))
-    pwm.set_pwm(4, 0, servo_min + ((i * 27) % mod))
-    pwm.set_pwm(5, 0, servo_min + ((i * 13) % mod))
-    pwm.set_pwm(6, 0, servo_min + ((i * 14) % mod))
-    pwm.set_pwm(7, 0, servo_min + ((i * 33) % mod))
-    pwm.set_pwm(8, 0, servo_min + ((i * 24) % mod))
-    pwm.set_pwm(9, 0, servo_min + ((i * 32) % mod))
-    pwm.set_pwm(10, 0, servo_min + ((i * 87) % mod))
-    pwm.set_pwm(11, 0, servo_min + ((i * 11) % mod))
-    pwm.set_pwm(12, 0, servo_min + ((i * 17) % mod))
-    pwm.set_pwm(13, 0, servo_min + ((i * 15) % mod))
-    pwm.set_pwm(14, 0, servo_min + ((i * 19) % mod))
-    pwm.set_pwm(15, 0, servo_min + ((i * 22) % mod))
-    time.sleep(0.5)
+while i <= 10:
+    pwm.set_pwm(0, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(1, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(2, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(3, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(4, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(5, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(6, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(7, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(8, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(9, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(10, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(11, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(12, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(13, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(14, 0, random.randint(servo_min, servo_max))
+    pwm.set_pwm(15, 0, random.randint(servo_min, servo_max))
+    time.sleep(0.2)
     i = i + 1
 pwm.set_all_pwm(0, 0)
 time.sleep(0.2)
