@@ -42,9 +42,13 @@ servo_max = 800  # Max pulse length out of 4096
 pwm.set_pwm_freq(60)
 
 print('Moving servo on channel 0, press Ctrl-C to quit...')
-while True:
+i = 0
+while i < 3:
     # Move servo on channel O between extremes.
     pwm.set_all_pwm(0, servo_min)
     time.sleep(2)
     pwm.set_all_pwm(0, servo_max)
     time.sleep(2)
+    i = i + 1
+
+#stop servos
