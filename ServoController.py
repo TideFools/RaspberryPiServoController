@@ -91,12 +91,19 @@ while i <= servo_max:
     time.sleep(i)
     i = i - 0.05
 
-# # Warm up, warm down
-# while i <= servo_max:
-#     pwm.set_all_pwm(0, i)
-#     time.sleep(0.05)
-#     i = i + 1
+# Warm up clockwise
+i = 350
+while i >= servo_min:
+    pwm.set_all_pwm(0, i)
+    time.sleep(0.5)
+    i = i - 1
 
+# Warm up counterclockwise
+i = 354
+while i <= servo_max:
+    pwm.set_all_pwm(0, i)
+    time.sleep(0.5)
+    i = i + 1
 
 #stop servos with pulse 350
 pwm.set_all_pwm(0, 0)
