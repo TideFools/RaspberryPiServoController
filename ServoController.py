@@ -52,8 +52,12 @@ print('Moving all servos, press Ctrl-C to quit...')
 #    time.sleep(0.05)
 #    i = i + 1
 
-pwm.set_pwm(1, 0, servo_max)
-time.sleep(2)
+# Check movement of each servo
+i = 0
+while i <= 16:
+    pwm.set_pwm(i, 0, servo_max)
+    time.sleep(1)
+    i = i + 1
 
 # # Moves each servo at different speeds
 # i = servo_min
