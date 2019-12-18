@@ -86,7 +86,7 @@ while i <= 10:
     pwm.set_pwm(13, 0, random.randint(servo_min, servo_max))
     pwm.set_pwm(14, 0, random.randint(servo_min, servo_max))
     pwm.set_pwm(15, 0, random.randint(servo_min, servo_max))
-    time.sleep(0.2)
+    time.sleep(0.5)
     i = i + 1
 pwm.set_all_pwm(0, 0)
 time.sleep(0.2)
@@ -116,7 +116,7 @@ time.sleep(0.2)
 
 # Warm up counterclockwise
 print("Warm up counterclockwise")
-i = 354
+i = 350
 while i <= servo_max:
     pwm.set_all_pwm(0, i)
     time.sleep(0.25)
