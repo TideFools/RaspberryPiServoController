@@ -45,86 +45,13 @@ servo_max = 430  # Max pulse length out of 4096
 pwm.set_pwm_freq(60)
 
 
-# Moves all servos through functional range of pulse lengths
-print("Moving all servos through functional range")
-i = servo_min
-while i <= servo_max:
-   pwm.set_all_pwm(0, i)
-   time.sleep(0.05)
-   i = i + 1
-pwm.set_all_pwm(0, 0)
-time.sleep(0.2)
-
-# Check movement of each servo
-print("Check movement of each servo")
-i = 0
-while i <= 15:
-    pwm.set_pwm(i, 0, servo_max)
-    time.sleep(0.5)
-    pwm.set_pwm(i, 0, 0)
-    i = i + 1
-pwm.set_all_pwm(0, 0)
-time.sleep(0.2)
-
-# Moves each servo at different speeds
-print("Move each servo at different speeds")
-i = 0
-while i <= 10:
-    pwm.set_pwm(0, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(1, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(2, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(3, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(4, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(5, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(6, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(7, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(8, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(9, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(10, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(11, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(12, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(13, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(14, 0, random.randint(servo_min, servo_max))
-    pwm.set_pwm(15, 0, random.randint(servo_min, servo_max))
-    time.sleep(0.5)
-    i = i + 1
-pwm.set_all_pwm(0, 0)
-time.sleep(0.2)
-
-# Start stop cycle at increasing rate
-print("Start stop cycle at increasing rate")
-i = 0.1
-while i > 0.0:
-    print (i)
-    pwm.set_all_pwm(0, servo_max)
-    time.sleep(i)
-    pwm.set_all_pwm(0, 0)
-    time.sleep(i)
-    i = i - 0.001
-pwm.set_all_pwm(0, 0)
-time.sleep(0.2)
-
-# Warm up clockwise
+# Warm up clockwise and run near max speed
 print("Warm up clockwise")
-i = 350
+i = 350  #begin at idle
 while i >= servo_min:
     pwm.set_all_pwm(0, i)
-    time.sleep(0.25)
+    time.sleep(0.05)
     i = i - 1
-pwm.set_all_pwm(0, 0)
-time.sleep(0.2)
+print("Running clockwise")
+pwm.set_all_pwm(0, servo_min)
 
-# Warm up counterclockwise
-print("Warm up counterclockwise")
-i = 350
-while i <= servo_max:
-    pwm.set_all_pwm(0, i)
-    time.sleep(0.25)
-    i = i + 1
-pwm.set_all_pwm(0, 0)
-time.sleep(0.2)
-
-
-
-#stop servos
-pwm.set_all_pwm(0, 0)
